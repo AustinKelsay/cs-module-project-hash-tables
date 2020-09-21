@@ -24,47 +24,56 @@ class HashTable:
         # Your code here
 
 
-    def get_num_slots(self):
-        """
-        Return the length of the list you're using to hold the hash
-        table data. (Not the number of items stored in the hash table,
-        but the number of slots in the main list.)
 
-        One of the tests relies on this.
+    # def get_num_slots(self):
+    #     """
+    #     Return the length of the list you're using to hold the hash
+    #     table data. (Not the number of items stored in the hash table,
+    #     but the number of slots in the main list.)
 
-        Implement this.
-        """
-        # Your code here
+    #     One of the tests relies on this.
 
-
-    def get_load_factor(self):
-        """
-        Return the load factor for this hash table.
-
-        Implement this.
-        """
-        # Your code here
+    #     Implement this.
+    #     """
+    #     # Your code here
 
 
-    def fnv1(self, key):
-        """
-        FNV-1 Hash, 64-bit
+    # def get_load_factor(self):
+    #     """
+    #     Return the load factor for this hash table.
 
-        Implement this, and/or DJB2.
-        """
-
-        # Your code here
-
-
-    def djb2(self, key):
-        """
-        DJB2 hash, 32-bit
-
-        Implement this, and/or FNV-1.
-        """
-        # Your code here
+    #     Implement this.
+    #     """
+    #     # Your code here
 
 
+    # def fnv1(self, key):
+    #     """
+    #     FNV-1 Hash, 64-bit
+
+    #     Implement this, and/or DJB2.
+    #     """
+
+    #     # Your code here
+
+
+        def djb2(self, key):
+            """
+            DJB2 hash, 32-bit
+
+            Implement this, and/or FNV-1.
+            """
+            # Your code here
+            string_utf = key.encode()
+
+            total = 0
+            for char in string_utf:
+                total += char
+                total &= 0xffffffff  # Limit total to 32 bits
+            return total
+
+
+    print(HashTable.djb2('Ass'))
     def hash_index(self, key):
         """
         Take an arbitrary key and return a valid integer index
