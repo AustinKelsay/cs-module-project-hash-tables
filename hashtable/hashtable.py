@@ -120,10 +120,13 @@ class HashTable:
         Implement this, and/or FNV-1.
         """
         # Your code here
-        hash = 6102
-        for x in key:
-            hash = ((hash << 5) + hash) + ord(x)
-        return hash
+        string_utf = key.encode()
+
+        total = 0
+        for char in string_utf:
+            total += char
+            total &= 0xffffffff
+        return total
 
 
     def hash_index(self, key):
