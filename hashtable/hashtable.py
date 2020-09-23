@@ -2,6 +2,7 @@ class HashTableEntry:
     """
     Linked List hash table key/value pair
     """
+    # Hash table entry is basically a "node" in a LL
     def __init__(self, key, value):
         self.key = key
         self.value = value
@@ -146,8 +147,12 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        
+        # Hash index used to find the index of the list where the correct LL lives
         slot = self.hash_index(key)
+        # Check to see if there is already a LL in that slot
         if self.data[slot] == 0:
+            # If so we increase the entries, create a new LL, add the key and value, and finally insert that new LL into the correct slot 
             self.entries += 1
             new_list = LinkedList()
             new_list.add_entry(key, value)
